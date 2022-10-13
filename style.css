@@ -1,0 +1,227 @@
+@charset "UTF-8";
+@import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Lexend+Deca&display=swap');
+
+
+/* General setup */
+
+:root {
+  --color-main-bg: hsl(233, 47%, 7%);
+  --color-card-bg: hsl(244, 38%, 16%);
+  --color-main-p: hsla(0, 0%, 100%, 0.75);
+  --color-stat-h: hsla(0, 0%, 100%, 0.6);
+  --color-accent: hsl(277, 64%, 61%);
+  --color-white: hsl(0, 0%, 100%);
+
+  --ff-primary: 'Inter', sans-serif;
+  --ff-secondary: 'Lexend Deca', sans-serif;
+
+  --fs-mobile-xs: 1.1rem;
+  --fs-mobile-s: 1.3rem;
+  --fs-mobile-m: 1.5rem;
+  --fs-mobile-l: 2.5rem;
+  --fs-mobile-xl: 2.8rem;
+
+  --fs-desktop-xs: 1.1rem;
+  --fs-desktop-s: 1.3rem;
+  --fs-desktop-m: 1.5rem;
+  --fs-desktop-l: 2.5rem;
+  --fs-desktop-xl: 3.5rem;
+
+  --fw-normal: 400;
+  --fw-bold: 700;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+
+  /* makes easier to calculate rem */
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+
+  min-height: 100%;
+  padding: 36px 24px;
+
+  background-color: var(--color-main-bg);
+
+  color: var(--color-main-p);
+  font-family: var(--ff-primary);
+  font-size: var(--fs-mobile-m);
+  font-weight: var(--fw-normal);
+}
+
+a {
+  color: var(--color-accent);
+  font-weight: var(--fw-bold);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+strong {
+  color: var(--color-accent);
+}
+
+/* Utility class */
+
+.center-content {
+  display: grid;
+  place-content: center;
+}
+
+.design-bg {
+  background: linear-gradient(hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5)),
+    url('./design/mobile-design.jpg') center / contain no-repeat;
+}
+
+/* Page styles */
+
+.card {
+  display: grid;
+
+  max-width: 480px;
+  min-width: 280px;
+  border-radius: 10px;
+
+  background-color: var(--color-card-bg);
+
+  overflow: hidden;
+}
+
+.card_img {
+  background-color: var(--color-accent);
+}
+
+.card_img img {
+  mix-blend-mode: multiply;
+  filter: contrast(65%);
+}
+
+.card_content {
+  padding-top: clamp(40px, 5vw, 70px);
+  padding-bottom: clamp(40px, 5vw, 65px);
+  padding-left: clamp(30px, 5vw, 70px);
+  padding-right: clamp(30px, 5vw, 70px);
+
+  text-align: center;
+}
+
+.card_title {
+  margin-bottom: 18px;
+
+  color: var(--color-white);
+  font-size: clamp(var(--fs-mobile-xl), 3vw, var(--fs-desktop-xl));
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+}
+
+.card_text {
+  margin-bottom: 40px;
+
+  line-height: 1.65;
+}
+
+.card_stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.stat_item >* {
+  display: block;
+}
+
+.stat_item-value {
+  margin-bottom: 10px;
+
+  font-size: var(--fs-mobile-l);
+  font-weight: var(--fw-bold);
+
+}
+
+.stat_item-label {
+  color: var(--color-stat-h);
+  font-family: var(--ff-secondary);
+  font-size: var(--fs-mobile-s);
+
+  text-transform: uppercase;
+}
+
+.attribution {
+  padding: 1em;
+
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .design-bg {
+    background: linear-gradient(hsla(0, 0%, 100%, 0.5), hsla(0, 0%, 100%, 0.5)),
+      url('./design/desktop-design.jpg') center / contain no-repeat;
+  }
+
+  .card {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+
+    max-width: 1110px;
+  }
+
+  .card_img {
+    justify-self: end;
+    order: 1;
+  }
+
+  .card_content {
+    display: flex;
+    flex-direction: column;
+
+    text-align: start;
+  }
+
+  .card_content> :nth-child(n+2) {
+    width: 90%;
+  }
+
+  .card_title {
+    margin-bottom: 25px;
+
+    line-height: 1.25;
+  }
+
+  .card_stat {
+    flex-direction: row;
+
+    margin-top: auto;
+  }
+}
