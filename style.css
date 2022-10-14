@@ -163,6 +163,7 @@ strong {
 .stat_item-value {
   margin-bottom: 10px;
 
+  color: var(--color-white);
   font-size: var(--fs-mobile-l);
   font-weight: var(--fw-bold);
 
